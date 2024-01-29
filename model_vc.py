@@ -312,55 +312,6 @@ class PatchDiscriminator(nn.Module):
  
 
 
-#class PatchDiscriminator(nn.Module):
-    #def __init__(self, n_class=33, ns=0.2, dp=0.1):
-        #super(PatchDiscriminator, self).__init__()
-        #self.ns = ns
-        #self.conv1 = nn.Conv2d(1, 64, kernel_size=5, stride=2)
-        #self.conv2 = nn.Conv2d(64, 128, kernel_size=5, stride=2)
-        #self.conv3 = nn.Conv2d(128, 256, kernel_size=5, stride=2)
-        #self.conv4 = nn.Conv2d(256, 512, kernel_size=5, stride=2)
-        #self.conv5 = nn.Conv2d(512, 512, kernel_size=5, stride=2)
-        #self.conv6 = nn.Conv2d(512, 1, kernel_size=1)
-        ##	self.conv_classify = nn.Conv2d(512, n_class, kernel_size=(17, 4))
-        ##	self.conv_classify = nn.Conv2d(512, n_class, kernel_size=(17, 4))
-        #self.drop1 = nn.Dropout2d(p=dp)
-        #self.drop2 = nn.Dropout2d(p=dp)
-        #self.drop3 = nn.Dropout2d(p=dp)
-        #self.drop4 = nn.Dropout2d(p=dp)
-        #self.drop5 = nn.Dropout2d(p=dp)
-        #self.ins_norm1 = nn.InstanceNorm2d(self.conv1.out_channels)
-        #self.ins_norm2 = nn.InstanceNorm2d(self.conv2.out_channels)
-        #self.ins_norm3 = nn.InstanceNorm2d(self.conv3.out_channels)
-        #self.ins_norm4 = nn.InstanceNorm2d(self.conv4.out_channels)
-        #self.ins_norm5 = nn.InstanceNorm2d(self.conv5.out_channels)
-
-    #def conv_block(self, x, conv_layer, after_layers):
-        #out = pad_layer(x, conv_layer, is_2d=True)
-        #out = F.leaky_relu(out, negative_slope=self.ns)
-        #for layer in after_layers:
-            #out = layer(out)
-        #return out
-
-    #def forward(self, x, classify=False):
-        #$x = torch.unsqueeze(x, dim=1)
-        #out = self.conv_block(x, self.conv1, [self.ins_norm1, self.drop1])
-        #out = self.conv_block(out, self.conv2, [self.ins_norm2, self.drop2])
-        #out = self.conv_block(out, self.conv3, [self.ins_norm3, self.drop3])
-        #out = self.conv_block(out, self.conv4, [self.ins_norm4, self.drop4])
-        #out = self.conv_block(out, self.conv5, [self.ins_norm5, self.drop5])
-        # GAN output value
-        #val = pad_layer(out, self.conv6, is_2d=True)
-        #val = val.view(val.size(0), -1)
-        #mean_val = torch.mean(val, dim=1)
-        # if classify:
-        #     # classify
-        #     logits = self.conv_classify(out)
-        #     print(logits.size())
-        #     logits = logits.view(logits.size(0), -1)
-        #     return mean_val, logits
-        # else:
-        #return mean_val
 
 
 class Generator(nn.Module):
